@@ -81,11 +81,16 @@ std::tuple<QProcessEnvironment, QString, bool> make_steam_environ(const QString&
     env.insert("LD_LIBRARY_PATH", library_path);
     env.insert("WINEPREFIX", app_wineprefix);
 
+    /*qDebug() << "Proton prefix: " << app_wineprefix;
+    qDebug() << "Proton runtime: " << runtime_path;
+    qDebug() << "LD_LIBRARY_PATH: " << library_path;*/
+
     return ret(env, error, error.isEmpty());
 }
 
 QString proton_path(const QString& proton_path)
 {
+    qDebug() << "Proton path is: " << proton_path;
     return proton_path + "/dist/bin/wine";
 }
 

@@ -55,4 +55,5 @@ otr_install_exec("${opentrack-libexec}${OSX_POST_INSTALL_DIR}" FILES "${CMAKE_SO
 otr_install_exec("${opentrack-libexec}${OSX_POST_INSTALL_DIR}" FILES
     "${CMAKE_SOURCE_DIR}/bin/NPClient.dll"
     "${CMAKE_SOURCE_DIR}/bin/NPClient64.dll"
-    "${CMAKE_SOURCE_DIR}/bin/TrackIR.exe")
+    "${CMAKE_SOURCE_DIR}/bin/TrackIR.exe"
+    "${CMAKE_SOURCE_DIR}/bin/opentrack-wrapper-wine-4.0-fallback.exe.so")

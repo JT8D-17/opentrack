@@ -9,3 +9,5 @@
 .gtm/
 .vscode
 .history
+*buildlog*
+/0_libaruco*
