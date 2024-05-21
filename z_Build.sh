@@ -2,7 +2,7 @@
 clear
 # Package requirements
 # Arch Linux: cmake, ninja, pkgconf, qt5-base, opencv, vtk, hdf5, openmpi, xplane-sdk-devel
-# Fedora: cmake git qt5-qttools-devel qt5-qtbase-private-devel procps-ng-devel opencv-devel wine-devel wine-devel.i686 glibc-devel.i686 onnxruntime ninja-build
+# Fedora: cmake git qt5-qttools-devel qt5-qtbase-private-devel procps-ng-devel opencv-devel wine-devel wine-devel.i686 glibc-devel.i686 ninja-build onnxruntime onnxruntime-devel
 
 # Set installation prefix path
 otdir="$(dirname "$PWD")/opentrack-install"
