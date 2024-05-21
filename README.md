@@ -28,7 +28,7 @@ App selection methodology and notes:
 - Looks for `steamapps/compatdata/[appid]` in all Steam libraries.
 - When found, extracts Proton version information from `version` and/or `config_info`.    
 - Looks for the Proton runtime specified by that information (taking `/steam/root/compatibilitytools.d` into consideration).   
-*Note:Switching an app from Proton > 5.9 back to a version < 5.9 may cause this logic to break. In this case, delete the config_info file from `steamapps/compatdata/[appid]`. This is totally safe.*
+*Note: Switching an app from Proton > 5.9 back to a version < 5.9 may cause this logic to break. In this case, delete the config_info file from `steamapps/compatdata/[appid]`. This is totally safe.*
 - When a Steam app's Proton runtime folder and prefix folder was found, it will be added to the list of available apps.
 - The selected app is stored in the selected opentrack profile when pressing "OK" button.
 - Proton paths are not stored in the opentrack profile for the game; only the appid is.    
@@ -52,9 +52,14 @@ These wrappers must be named so that the file filter, looking for `opentrack-wra
 
 ### 4. Build script
 
-This fork supports a new build shell script named `z_Build.sh`. It was made for my Arch Linux system and requires the following packages: `cmake, ninja, pkgconf, qt5-base, opencv, vtk, hdf5, openmpi, xplane-sdk-devel`    
-Default installation directory is `[parent directory of the opentrack source directory]/opentrack-install`, but edit it as you see fit.    
+This fork supports a new build shell script named `z_Build.sh`. It was made for my Arch Linux system and requires the following packages: `cmake, ninja, pkgconf, qt5-base, opencv, vtk, hdf5, openmpi, xplane-sdk-devel onnxruntime`    
+The Default installation directory is `[parent directory of the opentrack source directory]/opentrack-install`, but edit it as you see fit.    
 It will regenerate a log file named `z_buildlog.txt` upon every compilation.   
+**My primary aqpplication for opentrack is x-plane, so the plugin for it will be built by default. If you do not need it, comment out all instances of the   
+```-DSDK_XPLANE="$otsrc/xplane_sdk" \```   
+and   
+```link_xplane_sdk 2>&1 | tee "$logfile"```   
+lines in the script.**   
 Supported parameters:    
 - `aruco` or none: Build with Aruco support    
 - `aruco clean`: Build with Aruco support; delete old `build` folder before compilation    
@@ -77,9 +82,7 @@ A few findings I've collected in the course of implementing the above:
 - Opentrack's WINE wrapper, as any binary compiled with wineg++/winegcc, is only forward compatible, which means that a wrapper compiled against WINE 4.0 will work in WINE 6.5, but not the other way around.    
 As this may break a opentrack compatibility with games using a WINE/Proton release older than the one the wrapper was compiled against and to save users a bit of a headache compiling a wrapper on their own, this fork provides `opentrack-wrapper-wine-4.0-fallback.exe.so`.    
 It was compiled against WINE 4.0, is being installed to `/libexec/opentrack` by default and can be selected from the wrapper selector in the WINE Settings dialog.
-- Proton releases newer than 5.9 (i.e. 5.13 and newer) are being launched inside a container (using bubblewrap and pressure-vessel from Steam Runtime Soldier).     Opentrack's WINE wrapper does not have any capability for accessing the wineservers running in such a container.   
-**For this reason, do not try to use opentrack with Proton 5.13 or newer (at the moment) as the wrapper simply will not work.**
-
+- In order to run Proton releases newer than 5.9 (i.e. 5.13 and newer) which are being launched inside a container (using bubblewrap and pressure-vessel from Steam Runtime Soldier), Opentrack's WINE wrapper **must** be pointed to the game prefix and the **exact** Proton runtime folder used by the game.
 &nbsp;
 
 ## Throwaway features
