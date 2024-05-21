@@ -52,7 +52,10 @@ These wrappers must be named so that the file filter, looking for `opentrack-wra
 
 ### 4. Build script
 
-This fork supports a new build shell script named `z_Build.sh`. It was made for my Arch Linux system and requires the following packages: `cmake, ninja, pkgconf, qt5-base, opencv, vtk, hdf5, openmpi, xplane-sdk-devel onnxruntime`    
+This fork supports a new build shell script named `z_Build.sh`.
+Package requirements:
+- Arch Linux: `cmake, ninja, pkgconf, qt5-base, opencv, vtk, hdf5, openmpi, xplane-sdk-devel onnxruntime`
+- Fedora: `cmake git qt5-qttools-devel qt5-qtbase-private-devel procps-ng-devel opencv-devel wine-devel wine-devel.i686 glibc-devel.i686 onnxruntime ninja-build`
 The Default installation directory is `[parent directory of the opentrack source directory]/opentrack-install`, but edit it as you see fit.    
 It will regenerate a log file named `z_buildlog.txt` upon every compilation.   
 **My primary aqpplication for opentrack is x-plane, so the plugin for it will be built by default. If you do not need it, comment out all instances of the   
