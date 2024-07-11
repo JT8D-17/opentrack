@@ -15,6 +15,15 @@ using namespace options;
 #include <QVariant>
 
 #include <QDebug>
+#include <QVector>
+
+/* Function declaration for Steam/Proton related things */
+void get_steam_libs(QVector<QString> & outvector);
+bool analyze_version_string(QString inputstring,QString inregex, QString & outstring);
+void get_proton_version(QString inpath,QVector<QString> & inlibrary, QString & outpath);
+void read_proton_property(QString inputpath,QString inregex,QString & outstring);
+void adjust_path(QString inpath, QString suffix, QString & outpath);
+void get_proton_paths(QString input_path, QString input_appid, QVector<QString> & inlibrary, QVector<QString> & out_vector);
 
 struct settings : opts
 {
@@ -23,13 +32,12 @@ struct settings : opts
                 variant_wine{b, "variant-wine", true },
                 fsync{b, "fsync", true},
                 esync{b, "esync", true};
-
-    value<int>     proton_appid{b, "proton-appid", 0};
-    value<QVariant> proton_path{b, "proton-version", {} };
-    value<QVariant> wine_select_path{b, "wine-select-version", {"WINE"}};
-    value<QString> wine_custom_path{b, "wine-custom-version", ""};
-    value<QString> wineprefix{b, "wineprefix", "~/.wine/"};
     value<int>     protocol{b, "protocol", 2};
+
+    value<QString>  wineprefix{b, "wineprefix", "~/.wine"},
+                    wineruntime{b, "wineruntime", "/usr"},
+                    proton_appid{b, "proton_appid", "None"},
+                    wrapper{b, "wrapper", "opentrack-wrapper-wine.exe.so"};
 };
 
 class wine : TR, public IProtocol
@@ -79,11 +87,6 @@ private:
     settings s;
 
 private slots:
-    void onWinePathComboUpdated(QString selection);
-
-    void doBrowseWine();
-    void doBrowsePrefix();
-
     void doOK();
     void doCancel();
 };
