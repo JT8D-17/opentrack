@@ -26,7 +26,7 @@ void get_steam_libs(QVector<QString> & outvector)
     QFile libraryfile(librarycontainer);
     if (libraryfile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        const QRegularExpression nameExp("\"\\d+\"\\s+\"(.*)\"");
+        const QRegularExpression nameExp("\"path\"\\s+\"(.*)\"");
         QTextStream in(&libraryfile);
         QString line;
         while (in.readLineInto(&line)) {
