@@ -15,16 +15,20 @@ if(NOT WIN32)
             if(APPLE)
                 set(my-rt)
             endif()
+            set(PATH_WINE_GPP "" CACHE FILEPATH "Path to wineg++ folder")
+            if(PATH_WINE_GPP)
+                set(PATH_WINE_GPP_BINARY "${PATH_WINE_GPP}/usr/bin/wineg++")
+                message(STATUS "wineg++: Using " ${PATH_WINE_GPP_BINARY})
+            else()
+                set(PATH_WINE_GPP_BINARY "wineg++")
+                message(STATUS "wineg++: Using " ${PATH_WINE_GPP_BINARY})
+            endif()
             file(GLOB wine-deps "${CMAKE_CURRENT_SOURCE_DIR}/*.cxx")
             #install(FILES ${wine-deps} DESTINATION "${opentrack-src}/proto-wine")
-            set(winegxx-multilib "-m32")
-            if (NOT OPENTRACK_WINE_ARCH STREQUAL "")
-                set(winegxx-multilib "${OPENTRACK_WINE_ARCH}")
-            endif()
             add_custom_command(
               OUTPUT opentrack-wrapper-wine.exe.so
               DEPENDS ${wine-deps}
-              COMMAND wineg++ -mconsole -g -DNOMINMAX -O2 ${winegxx-multilib} -std=c++17 -fPIC -o
+              COMMAND ${PATH_WINE_GPP_BINARY} -B${PATH_WINE_GPP} -v -mconsole -g -DNOMINMAX -O2 -m32 -std=c++17 -fPIC -o
                       opentrack-wrapper-wine.exe -I "${CMAKE_SOURCE_DIR}" -I "${CMAKE_BINARY_DIR}"
                       ${wine-deps} -Wall -Wextra -Wpedantic
                       ${my-rt})

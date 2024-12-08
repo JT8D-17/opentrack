@@ -61,15 +61,20 @@ typedef struct WineSHM
     bool stop;
 } volatile WineSHM;
 
+static int VERSION = 2021-10-15;
+static int debug_strings = 0; //Enable debug strings
 static shm_wrapper* lck_posix = NULL;
 static WineSHM* shm_posix = NULL;
 static void *view_x, *view_y, *view_z, *view_heading, *view_pitch, *view_roll;
 static float offset_x, offset_y, offset_z;
-static XPLMCommandRef track_toggle = NULL, translation_disable_toggle = NULL;
-static int track_disabled = 1;
-static int translation_disabled;
+static void *xcam_mode, *xcam_ht_on, *xcam_offset_h, *xcam_offset_p, *xcam_offset_r, *xcam_offset_x, *xcam_offset_y, *xcam_offset_z;
+static XPLMCommandRef track_toggle = NULL, track_on = NULL, track_off = NULL, translation_disable_toggle = NULL;
+static XPLMDataRef StatusDataRef = NULL;
+static int track_status = 0;
+static int translation_disabled = 0;
+static int XCameraStatus = 0;
 
-static void reinit_offset() {
+static void get_head_xyz() {
     offset_x = XPLMGetDataf(view_x);
     offset_y = XPLMGetDataf(view_y);
     offset_z = XPLMGetDataf(view_z);
@@ -116,41 +121,166 @@ float write_head_position(float inElapsedSinceLastCall,
 {
     if (lck_posix != NULL && shm_posix != NULL) {
         shm_wrapper_lock(lck_posix);
-        if (!translation_disabled)
+        if (translation_disabled == 0)
         {
-            XPLMSetDataf(view_x, shm_posix->data[TX] * 1e-3 + offset_x);
-            XPLMSetDataf(view_y, shm_posix->data[TY] * 1e-3 + offset_y);
-            XPLMSetDataf(view_z, shm_posix->data[TZ] * 1e-3 + offset_z);
+			if (XCameraStatus < 2) {
+				XPLMSetDataf(view_x, shm_posix->data[TX] * 1e-3 + offset_x);
+				XPLMSetDataf(view_y, shm_posix->data[TY] * 1e-3 + offset_y);
+				XPLMSetDataf(view_z, shm_posix->data[TZ] * 1e-3 + offset_z);
+			} else {
+				if (XPLMGetDatai(xcam_mode) == 2) {
+					XPLMSetDataf(xcam_offset_x, shm_posix->data[TX] * 1e-3);
+					XPLMSetDataf(xcam_offset_y, shm_posix->data[TY] * 1e-3);
+					XPLMSetDataf(xcam_offset_z, shm_posix->data[TZ] * 1e-3);
+				}
+			}
         }
-        XPLMSetDataf(view_heading, shm_posix->data[Yaw] * 180 / M_PI);
-        XPLMSetDataf(view_pitch, shm_posix->data[Pitch] * 180 / M_PI);
-        XPLMSetDataf(view_roll, shm_posix->data[Roll] * 180 / M_PI);
-        shm_wrapper_unlock(lck_posix);
+        if (XCameraStatus < 2) {
+			XPLMSetDataf(view_heading, shm_posix->data[Yaw] * 180 / M_PI);
+			XPLMSetDataf(view_pitch, shm_posix->data[Pitch] * 180 / M_PI);
+			XPLMSetDataf(view_roll, shm_posix->data[Roll] * 180 / M_PI);
+
+		} else {
+			if (XPLMGetDatai(xcam_mode) == 2) {
+				XPLMSetDataf(xcam_offset_h, shm_posix->data[Yaw] * 180 / M_PI);
+				XPLMSetDataf(xcam_offset_p, shm_posix->data[Pitch] * 180 / M_PI);
+				XPLMSetDataf(xcam_offset_r, shm_posix->data[Roll] * 180 / M_PI);
+			}
+		}
+		shm_wrapper_unlock(lck_posix);
     }
     return -1.0;
 }
+
+/*
+ * Debug strings
+ */
+static void debug_status_output()
+{
+    char message[128];
+    if (track_status == 1)
+        sprintf(message,"Opentrack: Enabled tracking\n");
+    if (track_status == 0)
+        sprintf(message,"Opentrack: Disabled tracking\n");
+    XPLMDebugString(message);
+}
+
+static void debug_keyrelease_output()
+{
+    char message[128];
+    sprintf(message,"Opentrack: Registered a key release\n");
+    XPLMDebugString(message);
+}
+
+static void debug_translation_output()
+{
+    char message[128];
+    if (translation_disabled == 0)
+        sprintf(message,"Opentrack: Enabled translation\n");
+    if (translation_disabled == 1)
+        sprintf(message,"Opentrack: Disbled translation\n");
+    XPLMDebugString(message);
+}
+
+static void debug_xcam_status_output()
+{
+	char message[128];
+	if (XCameraStatus == 2)
+		sprintf(message,"Opentrack: X-Camera output started\n");
+	if (XCameraStatus == 1)
+		sprintf(message,"Opentrack: X-Camera output stopped\n");
+	XPLMDebugString(message);
+}
+/*
+ * X-Camera initialization
+ */
+ static void Xcam_init()
+ {
+	xcam_mode = XPLMFindDataRef("SRS/X-Camera/integration/X-Camera_enabled"); //2 = tir mode 1 = enabled
+	xcam_ht_on = XPLMFindDataRef("SRS/X-Camera/integration/headtracking_present");
+	xcam_offset_h = XPLMFindDataRef("SRS/X-Camera/integration/headtracking_heading_offset");
+	xcam_offset_p = XPLMFindDataRef("SRS/X-Camera/integration/headtracking_pitch_offset");
+	xcam_offset_r = XPLMFindDataRef("SRS/X-Camera/integration/headtracking_roll_offset");
+	xcam_offset_x = XPLMFindDataRef("SRS/X-Camera/integration/headtracking_x_offset");
+	xcam_offset_y = XPLMFindDataRef("SRS/X-Camera/integration/headtracking_y_offset");
+	xcam_offset_z = XPLMFindDataRef("SRS/X-Camera/integration/headtracking_z_offset");
+
+	if (xcam_mode && xcam_ht_on && xcam_offset_h && xcam_offset_p && xcam_offset_r && xcam_offset_x && xcam_offset_y && xcam_offset_z) {
+		XCameraStatus = 2;
+		XPLMSetDatai(xcam_ht_on,1);
+		if (debug_strings == 1) { debug_xcam_status_output(); }
+	}
+ }
+
+ static void Xcam_deinit()
+ {
+	 XCameraStatus = 1;
+	 XPLMSetDatai(xcam_ht_on,0);
+	 if (debug_strings == 1) { debug_xcam_status_output(); }
+ }
+/*
+ *Flight loop callback handling
+ */
+static void flightloop_handler()
+{
+    if (debug_strings == 1) { debug_keyrelease_output(); }
+    if (track_status == 1) {
+		/* */
+		if (XCameraStatus == 1) { Xcam_init(); }
+		else{ get_head_xyz(); }
+        XPLMRegisterFlightLoopCallback(write_head_position, -1, NULL);
+    }
+    if (track_status == 0) {
+		if (XCameraStatus > 1) { Xcam_deinit(); }
+        XPLMUnregisterFlightLoopCallback(write_head_position, NULL);
+    }
+    if (debug_strings == 1) { debug_status_output(); }
+}
+
+/*
+ *Command Handlers
+ */
 
 static int TrackToggleHandler(XPLMCommandRef inCommand,
                               XPLMCommandPhase inPhase,
                               void* inRefCon)
 {
-    if (inPhase != xplm_CommandBegin) return 0;
-
-    if (track_disabled)
-    {
-        //Enable
-        XPLMRegisterFlightLoopCallback(write_head_position, -1, NULL);
-
-        // Reinit the offsets when we re-enable the plugin
-        if (!translation_disabled)
-            reinit_offset();
+    /* Only perform this action upon command release */
+    if (inPhase == 2) {
+        if (track_status == 0) {
+            track_status = 1;
+            flightloop_handler();
+        }
+        else if (track_status == 1) {
+            track_status = 0;
+            flightloop_handler();
+        }
     }
-    else
-    {
-        //Disable
-        XPLMUnregisterFlightLoopCallback(write_head_position, NULL);
+    return 0;
+}
+
+
+static int TrackOnHandler(XPLMCommandRef inCommand,
+                            XPLMCommandPhase inPhase,
+                            void* inRefCon)
+{
+    /* Only perform this action upon command release */
+    if (inPhase == 2) {
+        track_status = 1;
+        flightloop_handler();
     }
-    track_disabled = !track_disabled;
+    return 0;
+}
+
+static int TrackOffHandler(XPLMCommandRef inCommand,
+                            XPLMCommandPhase inPhase,
+                            void* inRefCon)
+{
+    /* Only perform this action upon command release */
+    if (inPhase == 2) {
+        track_status = 0;
+        flightloop_handler();
+    }
     return 0;
 }
 
@@ -158,15 +288,33 @@ static int TranslationToggleHandler(XPLMCommandRef inCommand,
                                     XPLMCommandPhase inPhase,
                                     void* inRefCon)
 {
-    if (inPhase != xplm_CommandBegin) return 0;
-    
-    translation_disabled = !translation_disabled;
-    if (!translation_disabled)
-    {
-        // Reinit the offsets when we re-enable the translations so that we can "move around"
-        reinit_offset();
+    /* Only perform this action upon command release */
+    if (inPhase == 2) {
+        if (debug_strings == 1) { debug_keyrelease_output(); }
+        if (translation_disabled == 1) {
+            translation_disabled = 0;
+            if (debug_strings == 1) { debug_translation_output(); }
+            //get_head_xyz();
+        }
+        else if (translation_disabled == 0) {
+            translation_disabled = 1;
+            if (debug_strings == 1) { debug_translation_output(); }
+        }
     }
     return 0;
+}
+
+/* Dataref Handlers */
+
+static int GetDataiCallback(void * inRefcon)
+{
+    return track_status;
+}
+
+void SetDataiCallback(void * inRefcon, int inValue)
+{
+    track_status = inValue;
+    flightloop_handler();
 }
 
 static inline
@@ -180,12 +328,6 @@ void volatile_explicit_bzero(void volatile* restrict ptr, size_t len)
 
 PLUGIN_API OTR_GENERIC_EXPORT
 int XPluginStart (char* outName, char* outSignature, char* outDescription) {
-    // view_x = XPLMFindDataRef("sim/aircraft/view/acf_peX");
-    // view_y = XPLMFindDataRef("sim/aircraft/view/acf_peY");
-    // view_z = XPLMFindDataRef("sim/aircraft/view/acf_peZ");
-    // view_heading = XPLMFindDataRef("sim/graphics/view/pilots_head_psi");
-    // view_pitch = XPLMFindDataRef("sim/graphics/view/pilots_head_the");
-    // view_roll = XPLMFindDataRef("sim/graphics/view/field_of_view_roll_deg");
 
     view_x = XPLMFindDataRef("sim/graphics/view/pilots_head_x");
     view_y = XPLMFindDataRef("sim/graphics/view/pilots_head_y");
@@ -194,32 +336,48 @@ int XPluginStart (char* outName, char* outSignature, char* outDescription) {
     view_pitch = XPLMFindDataRef("sim/graphics/view/pilots_head_the");
     view_roll = XPLMFindDataRef("sim/graphics/view/pilots_head_phi");
 
-    track_toggle = XPLMCreateCommand("opentrack/toggle", "Disable/Enable head tracking");
-    translation_disable_toggle = XPLMCreateCommand("opentrack/toggle_translation", "Disable/Enable input translation from opentrack");
-
-    XPLMRegisterCommandHandler(track_toggle,
-                               TrackToggleHandler,
-                               1,
-                               NULL);
-
-    XPLMRegisterCommandHandler(translation_disable_toggle,
-                               TranslationToggleHandler,
-                               1,
-                               NULL);
+    track_toggle = XPLMCreateCommand("Opentrack/Toggle", "Toggle Head Tracking");
+    track_on = XPLMCreateCommand("Opentrack/On", "Enable Head Tracking");
+	track_off = XPLMCreateCommand("Opentrack/Off", "Disable Head Tracking");
+	translation_disable_toggle = XPLMCreateCommand("Opentrack/Toggle_Translation", "Toggle Input Translation");
 
 
-    if (view_x && view_y && view_z && view_heading && view_pitch && track_toggle && translation_disable_toggle) {
+    XPLMRegisterCommandHandler(track_toggle,TrackToggleHandler,1,NULL);
+    XPLMRegisterCommandHandler(track_on,TrackOnHandler,1,NULL);
+    XPLMRegisterCommandHandler(track_off,TrackOffHandler,1,NULL);
+    XPLMRegisterCommandHandler(translation_disable_toggle,TranslationToggleHandler,1,NULL);
+
+    StatusDataRef = XPLMRegisterDataAccessor(
+								"Opentrack/Tracking",
+								xplmType_Int,								/* The types we support */
+								1,											/* Writable */
+								GetDataiCallback, SetDataiCallback,			/* No accessors for ints */
+								NULL, NULL,									/* No accessors for floats */
+								NULL, NULL,									/* No accessors for doubles */
+								NULL, NULL,									/* No accessors for int arrays */
+								NULL, NULL,									/* No accessors for float arrays */
+								NULL, NULL,									/* No accessors for raw data */
+								NULL, NULL);								/* Refcons not used */
+
+    if (view_x && view_y && view_z && view_heading && view_pitch && track_toggle && track_on && track_off && translation_disable_toggle) {
         lck_posix = shm_wrapper_init(WINE_SHM_NAME, WINE_MTX_NAME, sizeof(WineSHM));
         if (lck_posix->mem == MAP_FAILED) {
-            fprintf(stderr, "opentrack failed to init SHM!\n");
+            fprintf(stderr, "Opentrack: Failed to init SHM!\n");
             return 0;
         }
         shm_posix = lck_posix->mem;
         volatile_explicit_bzero(shm_posix, sizeof(WineSHM));
-        strcpy(outName, "opentrack");
-        strcpy(outSignature, "opentrack - freetrack lives!");
-        strcpy(outDescription, "head tracking view control");
-        fprintf(stderr, "opentrack init complete\n");
+        strcpy(outName, "Opentrack");
+        strcpy(outSignature, "bk_sthalik.Opentrack");
+        strcpy(outDescription, "Head tracking plugin for use with Opentrack");
+        //Debug
+        if (debug_strings == 1) {
+            char message[128];
+            sprintf(message,"Opentrack: Plugin v%.2f loaded\n", VERSION);
+            XPLMDebugString(message);
+        }
+        fprintf(stderr, "Opentrack: Init complete\n");
+
         return 1;
     }
     return 0;
@@ -233,19 +391,39 @@ void XPluginStop (void) {
         lck_posix = NULL;
         shm_posix = NULL;
     }
+    if (StatusDataRef)
+		XPLMUnregisterDataAccessor(StatusDataRef);
 }
 
 PLUGIN_API OTR_GENERIC_EXPORT
 int XPluginEnable (void) {
-    XPLMRegisterFlightLoopCallback(write_head_position, -1.0, NULL);
-    track_disabled = 0;
+
+	XPLMPluginID XCam = XPLMFindPluginBySignature("SRS.X-Camera");
+	if (XCam != XPLM_NO_PLUGIN_ID) {
+		if (debug_strings == 1) {
+			char message[128];
+			sprintf(message,"Opentrack: X-Camera plugin found (ID %d); enabling output mode\n",XCam);
+			XPLMDebugString(message);
+		}
+		XCameraStatus = 1;
+	}
     return 1;
 }
 
 PLUGIN_API OTR_GENERIC_EXPORT
 void XPluginDisable (void) {
-    XPLMUnregisterFlightLoopCallback(write_head_position, NULL);
-    track_disabled = 1;
+	if (XCameraStatus != 0) {
+		XCameraStatus = 0;
+		if (debug_strings == 1) {
+			char message[128];
+			sprintf(message,"Opentrack: Disabling X-Camera output mode\n");
+			XPLMDebugString(message);
+		}
+	}
+    track_status = 0;
+    flightloop_handler();
+
+
 }
 
 PLUGIN_API OTR_GENERIC_EXPORT
@@ -253,6 +431,7 @@ void XPluginReceiveMessage(XPLMPluginID    inFromWho,
                            int             inMessage,
                            void *          inParam)
 {
-    if (inMessage == XPLM_MSG_AIRPORT_LOADED)
-        reinit_offset();
+    /*if (inMessage == XPLM_MSG_AIRPORT_LOADED) {
+        get_head_xyz();
+    }*/
 }
