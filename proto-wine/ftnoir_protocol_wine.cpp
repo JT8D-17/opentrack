@@ -1,8 +1,8 @@
 #include "ftnoir_protocol_wine.h"
-#include <qprocess.h>
 #ifndef OTR_WINE_NO_WRAPPER
 #   include "csv/csv.h"
 #endif
+#include "compat/library-path.hpp"
 
 #include <cstring>
 #include <cmath>
@@ -10,7 +10,8 @@
 #include <QString>
 #include <QDebug>
 
-#include "proton.h"
+#include <QDir>
+#include <QFileInfo>
 
 wine::wine() = default;
 
@@ -46,7 +47,6 @@ void wine::pose(const double *headpose, const double*)
 #ifndef OTR_WINE_NO_WRAPPER
         if (shm->gameid != gameid)
         {
-            //qDebug() << "proto/wine: looking up gameData";
             QString gamename;
             QMutexLocker foo(&game_name_mutex);
             /* only EZCA for FSX requires dummy process, and FSX doesn't work on Linux */
@@ -65,136 +65,134 @@ module_status wine::initialize()
 #ifndef OTR_WINE_NO_WRAPPER
     static const QString library_path(OPENTRACK_BASE_PATH + OPENTRACK_LIBRARY_PATH);
 
-    /////////////////////////
-    // determine wine path //
-    /////////////////////////
-    QString wine_path = "wine";
+    auto env = QProcessEnvironment::systemEnvironment();
+
+    QString wine_path = "None";
+    QString wine_prefix = "None";
 
     if (s.variant_wine) {
-        // NORMAL WINE
+        /* Add Wineprefix */
+        if (!s.wineprefix->isEmpty())
+            wine_prefix = s.wineprefix;
+        if (wine_prefix[0] == '~')
+            wine_prefix = qgetenv("HOME") + wine_prefix.mid(1);
+        if (wine_prefix[0] != '/')
+            return error(tr("Wine/Proton prefix must be an absolute path (given '%1')").arg(wine_prefix));
+        /* Add WINE runtime */
+        if (!s.wineruntime->isEmpty())
+            wine_path = s.wineruntime;
+        if (wine_path[0] == '~')
+            wine_path = qgetenv("HOME") + wine_path.mid(1);
+        if (wine_path[0] != '/')
+            return error(tr("Wine/Proton runtime must be an absolute path (given '%1')").arg(wine_path));
+        if(!QFileInfo(wine_path + "/bin/wine").exists())
+            return error(tr("No WINE binary found at '%1'. Please pick another folder.").arg(wine_path));
+        if(QDir(wine_path + "/bin/wine").exists())
+            return error(tr("Target '%1' is a folder, not a binary. Please pick another folder.").arg(wine_path + "/bin/wine"));
+        /* Determine if Proton or WINE */
+        if (wine_path.contains("Proton", Qt::CaseInsensitive)) {    // returns true
+            qDebug() << "Proton folder detected at " << wine_path;
+        } else {
+            qDebug() << "Regular WINE folder detected at " << wine_path;
+            env.insert("WINEDLLPATH", wine_path+"/lib:"+wine_path+"/lib64:"+wine_path+"/lib32");
+            env.insert("LD_LIBRARY_PATH", wine_path+"/lib:"+wine_path+"/lib64:"+wine_path+"/lib32");
+        }
+    }
 
-        // resolve combo box
-        if (s.wine_select_path().toString() != "WINE") {
-            // if we are not supposed to use system wine then:
-            if (s.wine_select_path().toString() != "CUSTOM") {
-                // if we don't have a custom path then change the wine_path to the path corresponding to the selected version
-                wine_path = s.wine_select_path().toString();
-            }
-            else if (!s.wine_custom_path->isEmpty()) {
-                // if we do have a custom path and it is not empty then
-                wine_path = s.wine_custom_path;
+    if (s.variant_proton) {
+        if (s.proton_appid == "None")
+            return error(tr("No app ID specified for Proton (Steam Play), please select one from the configuration dialog."));
+        /* Look for Steam libraries on the system - see proton_handling.cpp */
+        QVector<QString> steam_libs;
+        get_steam_libs(steam_libs);
+        /* Look for Proton runtime version and Proton prefix for the Steam app in the Steam libraries */
+        for (int i = 0; i < steam_libs.size(); ++i) {
+            QString searchpath;
+            QVector<QString> returnvector;
+            adjust_path(steam_libs.at(i),"/steamapps/compatdata/",searchpath); /* Adjust search path for home folder path - see proton_handling.cpp */
+            get_proton_paths(searchpath,s.proton_appid,steam_libs,returnvector); /* Gets app's Proton runtime and prefix paths - see proton_handling.cpp */
+            if (returnvector.size() == 2) {
+                wine_path = returnvector[0]; /* App's Proton runtime path (/dist/ folder!) */
+                wine_prefix = returnvector[1]; /* App's Proton prefix path */
             }
         }
 
-        // parse tilde if present
-        if (wine_path[0] == '~')
-            wine_path = qgetenv("HOME") + wine_path.mid(1);
+        QString ld_library_paths = wine_path+"/lib64:"+wine_path+"/lib:";
+        QString steamruntimefolder = QDir::homePath() + "/.local/share/Steam/ubuntu12_32/steam-runtime";
+        ld_library_paths = ld_library_paths
+        +"/overrides/lib/x86_64-linux-gnu:"
+        +"/overrides/lib/x86_64-linux-gnu/aliases:"
+        +"/overrides/lib/i386-linux-gnu:"
+        +"/overrides/lib/i386-linux-gnu/aliases:"
+        +steamruntimefolder+"/pinned_libs_32:"
+        +steamruntimefolder+"/pinned_libs_64:"
+        +steamruntimefolder+"/i386/lib/i386-linux-gnu:"
+        +steamruntimefolder+"/i386/lib:"
+        +steamruntimefolder+"/i386/usr/lib/i386-linux-gnu:"
+        +steamruntimefolder+"/i386/usr/lib:"
+        +steamruntimefolder+"/amd64/lib/x86_64-linux-gnu:"
+        +steamruntimefolder+"/amd64/lib:"
+        +steamruntimefolder+"/amd64/usr/lib/x86_64-linux-gnu:"
+        +steamruntimefolder+"/amd64/usr/lib";
+
+        /* LD_LIBRARY_PATH=": /media/Data/SteamLibrary/steamapps/common/Elite Dangerous" */
+
+        env.insert("LD_LIBRARY_PATH", ld_library_paths);
+        env.insert("WINEDLLPATH",wine_path+"/lib64/wine:"+wine_path+"/lib/wine");
+        env.insert("WINEDEBUG","-all");
+        env.insert("WINE_LARGE_ADDRESS_AWARE", "1");
     }
-    else if (s.variant_proton)
-    {
-        // PROTON
-
-        wine_path = s.proton_path().toString() + "/bin/wine";
+    /* Check and set path to WINE/Proton prefix */
+    if (wine_prefix == "None") {
+        return error(tr("No WINE/Proton prefix path set. Please Opentrack's settings."));
+    } else {
+        env.insert("WINEPREFIX", wine_prefix);
     }
-    qDebug() << "proto/wine: wine_path:" << wine_path;
-
-
-    /////////////////////////////////////
-    // determine environment variables //
-    /////////////////////////////////////
-    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-
-    // if proton is used setup proton environment
-    if (s.variant_proton)
-    {
-        auto [proton_env, env_error_string, env_success] = make_steam_environ(s.proton_path().toString());
-        env = proton_env;
-
-        if (!env_success)
-            return error(env_error_string);
-    }
-
-    // determine wineprefix
-    if (s.variant_proton && s.variant_proton_steamplay) {
-        // wine prefix is dependend on steam
-
-        if (s.proton_appid == 0)
-            return error(tr("Must specify application id for Proton (Steam Play)"));
-
-        auto [prefix, error_string, success] = make_wineprefix(s.proton_appid);
-        qDebug() << "proto/wine: wineprefix:" << prefix;
-        env.insert("WINEPREFIX", prefix);
-
-        if (!success)
-            return error(error_string);
-    }
-    else {
-        // wine prefix was supplied via path
-
-        QString wineprefix = "";
-
-        // check if prefix was supplied via wine
-        if (s.variant_wine && !s.wineprefix->isEmpty())
-            wineprefix = s.wineprefix;
-
-        // check if prefix was supplied via proton
-        if (s.variant_proton_external && !s.protonprefix->isEmpty())
-            wineprefix = s.protonprefix;
-
-        // check if the user specified a prefix anywhere
-        if (wineprefix.isEmpty())
-            return error(tr("Prefix has not been defined!").arg(wineprefix));
-
-        // handle tilde
-        if (wineprefix[0] == '~')
-            wineprefix = qgetenv("HOME") + wineprefix.mid(1);
-
-        // return error if relative path is given
-        if (wineprefix[0] != '/')
-            return error(tr("Wine prefix must be an absolute path (given '%1')").arg(wineprefix));
-
-        qDebug() << "proto/wine: wineprefix:" << wineprefix;
-
-        env.insert("WINEPREFIX", wineprefix);
+    /* Check and set path to WINE binary */
+    if (wine_path == "None") {
+        return error(tr("No WINE/Proton runtime path set. Please Opentrack's settings."));
+    } else {
+        env.insert("PATH",wine_path+"/bin/:/usr/bin:/bin");
+        env.insert("WINELOADER", wine_path + "/bin/wine");
+        /* env.insert("WINEPATH", wine_path + "/bin");
+        env.insert("WINESERVER", wine_path + "/bin/wineserver"); */
     }
 
-    // ESYNC and FSYNC
     if (s.esync)
         env.insert("WINEESYNC", "1");
     if (s.fsync)
         env.insert("WINEFSYNC", "1");
 
-    // Headtracking Protocol
     env.insert("OTR_WINE_PROTO", QString::number(s.protocol+1));
 
+    /* Last stop for debugging */
+    qDebug() << "LD_LIBRARY_PATH: " << env.value("LD_LIBRARY_PATH");
+    qDebug() << "WINEDLLPATH: " << env.value("WINEDLLPATH");
+    qDebug() << "WINEDEBUG: " << env.value("WINEDEBUG");
+    qDebug() << "WINE_LARGE_ADDRESS_AWARE: " << env.value("WINE_LARGE_ADDRESS_AWARE");
+    qDebug() << "WINEPREFIX: " << env.value("WINEPREFIX");
+    qDebug() << "PATH: " << env.value("PATH");
+    qDebug() << "WINELOADER: "<< env.value("WINELOADER");
+    /* qDebug() << "WINEPATH: " << env.value("WINEPATH");
+    qDebug() << "WINESERVER: " << env.value("WINESERVER"); */
+    qDebug() << "WINEESYNC: " << env.value("WINEESYNC");
+    qDebug() << "WINEFSYNC: " << env.value("WINEFSYNC");
 
-    ////////////////////////////////
-    // launch the wrapper program //
-    ////////////////////////////////
 
+
+    /* Prepare and start wrapper */
+    QString run_wine_path = wine_path + "/bin/wine";
+    /* qDebug() << "Launching WINE server from" << run_wine_path; */
+    /* qDebug() << library_path; */
     wrapper.setProcessEnvironment(env);
     wrapper.setWorkingDirectory(OPENTRACK_BASE_PATH);
-    wrapper.start(wine_path, { library_path + "opentrack-wrapper-wine.exe.so" });
-    wrapper.waitForStarted();
-    if (wrapper.state() == QProcess::ProcessState::NotRunning) {
-        return error(tr("Failed to start Wine! Make sure the binary is set correctly."));
-    }
+    wrapper.start(run_wine_path, { library_path + s.wrapper });
 #endif
 
     if (lck_shm.success())
     {
         shm = (WineSHM*) lck_shm.ptr();
         memset(shm, 0, sizeof(*shm));
-
-        qDebug() << "proto/wine: shm success";
-
-        // display "waiting for game message" (overwritten once a game is detected)
-#ifndef OTR_WINE_NO_WRAPPER
-        connected_game = "waiting for game...";
-#endif
-    }
-    else {
-        qDebug() << "proto/wine: shm no success";
     }
 
     if (lck_shm.success())

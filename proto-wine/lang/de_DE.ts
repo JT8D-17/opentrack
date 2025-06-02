@@ -2,50 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de_DE">
 <context>
-    <name>FTControls</name>
-    <message>
-        <source>Select path to Wine Binary</source>
-        <translation>Pfad des wine-Programms auswählen</translation>
-    </message>
-    <message>
-        <source>Select Wine Prefix</source>
-        <translation>wine-Prefix auswählen</translation>
-    </message>
-    <message>
-        <source>Select Proton Prefix</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>UICFTControls</name>
-    <message>
-        <source>Wine settings</source>
-        <translation>Wine-Einstellungen</translation>
-    </message>
-    <message>
-        <source>Wine variant</source>
-        <translation>Wine-Variante</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;prefix&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Prefix&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>/path_to_the_prefix/</source>
-        <translation>/pfad_zum_prefix/</translation>
-    </message>
-    <message>
-        <source>Browse Prefix</source>
-        <translation>Prefix suchen</translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;wine/runner exectuable path&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pfad zum ausführbaren wine/runner&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
-    </message>
-    <message>
-        <source>Browse Wine Path</source>
-        <translation>Wine-Pfad suchen</translation>
-    </message>
     <message>
         <source>Advanced</source>
         <translation>Erweitert</translation>
@@ -79,50 +36,78 @@
         <translation>Beides</translation>
     </message>
     <message>
-        <source>Proton (select version and mode)</source>
-        <translation>Proton (wähle Version und Modus)</translation>
+        <source>Wine Settings</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Steam Play (select Steam Application ID)</source>
-        <translation>Steam Play (wähle Steam Applikation ID)</translation>
+        <source>WINE/Proton Controls</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>UMU enabled Launchers (select prefix)</source>
-        <translation>UMU unterstützte Launcher (wähle Prefix)</translation>
+        <source>WINE</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Wine (select version and prefix)</source>
-        <translation>Wine (wähle Version und Prefix)</translation>
+        <source>(or Proton with manual paths)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Steam Play is Steams System to run Windows titles on Linux via Proton.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Steam Play ist Steams System, um Windows Titel auf Linux, via Proton, auszuführen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>Prefix</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UMU is a launcher that allows the use of Proton outside of Steam. Some game launchers like Lutris may use this to enable Proton support.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;UMU ist ein Launcher, der es erlaubt Proton außerhalb von Steam zu nutzen. Manche Spiel Launcher, wie Lutris, können dies für Proton Support nutzen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The path to the WINE prefix used by the application, i.e. the folder containing the &amp;quot;drive_c&amp;quot; folder&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Runtime</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The path the WINE/Proton runtime binary folder used by the application that contains the wine binary, i.e. /bin/wine.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Proton</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>WINE Wrapper</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>wine</name>
     <message>
-        <source>Must specify application id for Proton (Steam Play)</source>
-        <translation>Die Application-ID für Proton (Steam Play) muss angegeben werden</translation>
-    </message>
-    <message>
-        <source>Wine prefix must be an absolute path (given &apos;%1&apos;)</source>
-        <translation>Wine-Prefix muss ein absoluter Pfad sein (&apos;%1&apos; angegeben)</translation>
-    </message>
-    <message>
-        <source>Failed to start Wine! Make sure the binary is set correctly.</source>
-        <translation>Starten von Wine fehlgeschlagen! Stelle sicher, dass der Programmpfad richtig gesetzt ist.</translation>
-    </message>
-    <message>
         <source>Can&apos;t open shared memory mapping</source>
         <translation>Shared-Memory-Mapping kann nicht geöffnet werden</translation>
     </message>
     <message>
-        <source>Prefix has not been defined!</source>
+        <source>Wine/Proton prefix must be an absolute path (given &apos;%1&apos;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Wine/Proton runtime must be an absolute path (given &apos;%1&apos;)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No WINE binary found at &apos;%1&apos;. Please pick another folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Target &apos;%1&apos; is a folder, not a binary. Please pick another folder.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No app ID specified for Proton (Steam Play), please select one from the configuration dialog.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No WINE/Proton prefix path set. Please Opentrack&apos;s settings.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No WINE/Proton runtime path set. Please Opentrack&apos;s settings.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

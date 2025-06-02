@@ -53,7 +53,7 @@ Press &quot;clear calibration&quot; to remove any calibration data pertaining to
     </message>
     <message>
         <source>1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">90度 {1?}</translation>
     </message>
 </context>
 <context>
