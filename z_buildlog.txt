@@ -1,0 +1,820 @@
+Building Opentrack
+Building without Aruco.
+-- The C compiler identification is GNU 16.1.1
+-- The CXX compiler identification is GNU 16.1.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- User settings file '/media/Data/0_Git_Repos/opentrack/opentrack/sdk-paths-bjoern@GNU-Linux.cmake' doesn't exist
+-- Found PkgConfig: /usr/bin/pkg-config (found version "2.5.1")
+-- Found OpenGL: /usr/lib/libOpenGL.so
+-- Performing Test HAVE_STDATOMIC
+-- Performing Test HAVE_STDATOMIC - Success
+-- module api
+-- module compat
+-- Checking for module 'libproc2'
+--   Found libproc2, version 4.0.6-dirty
+-- module csv
+-- module cv
+-- module filter-accela-hamilton
+-- module filter-accela
+-- module filter-alpha-spectrum
+-- module filter-ewma
+-- module filter-hamilton
+-- module filter-nm
+-- module user-interface
+-- Checking for module 'x11'
+--   Found x11, version 1.8.13
+-- module input
+-- module logic
+-- module migration
+-- module executable
+-- module options
+-- module pose-widget
+-- module proto-fgfs
+-- module proto-libevdev
+-- module proto-udp
+-- module proto-wine
+-- module qxt-mini
+-- Checking for module 'xcb'
+--   Found xcb, version 1.17.0
+-- Checking for module 'xproto'
+--   Found xproto, version 7.0.34
+-- module spline
+-- module tracker-easy
+-- module tracker-freepie-udp
+-- module tracker-fusion
+-- module tracker-linux-joystick
+-- module tracker-neuralnet
+-- module tracker-pt-base
+-- module tracker-pt
+-- module tracker-s2bot
+-- module tracker-test
+-- module tracker-udp
+-- module tracker-xreal-one
+-- module video-opencv
+-- module video
+-- module xplane-plugin
+Install directory:
+   /media/Data/0_Git_Repos/opentrack/opentrack-install
+Compile flags:
+   CXX: -ggdb -Wall -Wextra -Wpedantic
+   CXX_DEBUG: -g
+Link flags:
+   LINK_SHARED: 
+   LINK_SHARED_DEBUG: 
+Static archive flags:
+   STATIC: 
+   STATIC_DEBUG: 
+--
+-- Configuring done (3.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: /media/Data/0_Git_Repos/opentrack/opentrack/build
+[0/2] Re-checking globbed directories...
+[1/584] Generating moc_activation-context.cpp
+[2/584] Generating moc_arch.cpp
+[3/584] Generating moc_linkage-macros.cpp
+[4/584] Generating moc_macros.cpp
+[5/584] Generating moc_base-path.cpp
+[6/584] Generating moc_camera-names.cpp
+[7/584] Generating moc_check-visible.cpp
+[8/584] Generating moc_dquat.cpp
+[9/584] Generating moc_enum-operators.cpp
+[10/584] Generating moc_export.cpp
+[11/584] Generating moc_library-path.cpp
+[12/584] Generating moc_linkage.cpp
+[13/584] Generating moc_math-imports.cpp
+[14/584] Generating moc_meta.cpp
+[15/584] Generating moc_mutex.cpp
+[16/584] Generating moc_process-list.cpp
+[17/584] Generating moc_qhash.cpp
+[18/584] Generating moc_qt-dpi.cpp
+[19/584] Generating moc_run-in-thread.cpp
+[20/584] Generating moc_shm.cpp
+[21/584] Generating moc_sleep.cpp
+[22/584] Generating moc_correlation-calibrator.cpp
+[23/584] Generating moc_euler.cpp
+[24/584] Generating moc_hamilton-tools.cpp
+[25/584] Generating moc_math.cpp
+[26/584] Generating moc_qt-signal.cpp
+[27/584] Generating moc_simple-mat.cpp
+[28/584] Generating moc_spinbox64.cpp
+[29/584] Generating moc_sysexits.cpp
+[30/584] Generating moc_thread-name.cpp
+[31/584] Generating moc_time.cpp
+[32/584] Generating moc_timer.cpp
+[33/584] Generating moc_tr.cpp
+[34/584] Generating moc_variance.cpp
+[35/584] Generating moc_export.cpp
+[36/584] Generating moc_plugin-api.cpp
+[37/584] Generating moc_plugin-support.cpp
+[38/584] Generating moc_powerset.cpp
+[39/584] Generating moc_qxtglobal.cpp
+[40/584] Generating moc_qxtglobalshortcut.cpp
+[41/584] Generating moc_qxtglobalshortcut_p.cpp
+[42/584] Generating moc_x11-keymap.cpp
+[43/584] Building CXX object CMakeFiles/opentrack-version.dir/version.cpp.o
+[44/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_activation-context.cpp.o
+[45/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_base-path.cpp.o
+[46/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_camera-names.cpp.o
+[47/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_correlation-calibrator.cpp.o
+[48/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_arch.cpp.o
+[49/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_check-visible.cpp.o
+[50/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_euler.cpp.o
+[51/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_dquat.cpp.o
+[52/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_enum-operators.cpp.o
+[53/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_hamilton-tools.cpp.o
+[54/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_library-path.cpp.o
+[55/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_linkage-macros.cpp.o
+[56/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/activation-context.cpp.o
+[57/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_export.cpp.o
+[58/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_linkage.cpp.o
+[59/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_process-list.cpp.o
+[60/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_math.cpp.o
+[61/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_macros.cpp.o
+[62/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_qhash.cpp.o
+[63/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_qt-dpi.cpp.o
+[64/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_meta.cpp.o
+[65/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_mutex.cpp.o
+[66/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_shm.cpp.o
+[67/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_simple-mat.cpp.o
+[68/584] Building C object _deps/ahrsfusion-build/CMakeFiles/Fusion.dir/FusionOffset.c.o
+cc1: warning: command-line option ‘-fuse-cxa-atexit’ is valid for C++/ObjC++ but not for C
+[69/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/sleep.cpp.o
+[70/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_math-imports.cpp.o
+[71/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_run-in-thread.cpp.o
+[72/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_sysexits.cpp.o
+[73/584] Building C object _deps/ahrsfusion-build/CMakeFiles/Fusion.dir/FusionCompass.c.o
+cc1: warning: command-line option ‘-fuse-cxa-atexit’ is valid for C++/ObjC++ but not for C
+[74/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_time.cpp.o
+[75/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_tr.cpp.o
+[76/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_variance.cpp.o
+[77/584] Building CXX object api/CMakeFiles/opentrack-api.dir/moc_export.cpp.o
+[78/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_thread-name.cpp.o
+[79/584] Building CXX object api/CMakeFiles/opentrack-api.dir/moc_plugin-support.cpp.o
+[80/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_timer.cpp.o
+[81/584] Building CXX object qxt-mini/CMakeFiles/opentrack-qxt-mini.dir/qxtglobalshortcut_mac.cpp.o
+[82/584] Building CXX object qxt-mini/CMakeFiles/opentrack-qxt-mini.dir/moc_powerset.cpp.o
+[83/584] Building CXX object qxt-mini/CMakeFiles/opentrack-qxt-mini.dir/moc_qxtglobal.cpp.o
+[84/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_sleep.cpp.o
+[85/584] Building CXX object qxt-mini/CMakeFiles/opentrack-qxt-mini.dir/moc_qxtglobalshortcut_p.cpp.o
+[86/584] Building CXX object qxt-mini/CMakeFiles/opentrack-qxt-mini.dir/moc_x11-keymap.cpp.o
+[87/584] Linking CXX static library libopentrack-version.a
+[88/584] Building C object _deps/ahrsfusion-build/CMakeFiles/Fusion.dir/FusionAhrs.c.o
+cc1: warning: command-line option ‘-fuse-cxa-atexit’ is valid for C++/ObjC++ but not for C
+[89/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/shm.cpp.o
+[90/584] Building C object x-plane-plugin/CMakeFiles/opentrack-xplane-plugin.dir/plugin.c.o
+cc1: warning: command-line option ‘-fuse-cxa-atexit’ is valid for C++/ObjC++ but not for C
+/media/Data/0_Git_Repos/opentrack/opentrack/x-plane-plugin/plugin.c:41:35: warning: unknown option after ‘#pragma GCC diagnostic’ kind [-Wpragmas]
+   41 | #   pragma GCC diagnostic ignored "-Wimplicit-float-conversion"
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/media/Data/0_Git_Repos/opentrack/opentrack/x-plane-plugin/plugin.c:41:35: note: did you mean ‘-Wno-float-conversion’?
+/media/Data/0_Git_Repos/opentrack/opentrack/x-plane-plugin/plugin.c:43:35: warning: unknown option after ‘#pragma GCC diagnostic’ kind [-Wpragmas]
+   43 | #   pragma GCC diagnostic ignored "-Wlanguage-extension-token"
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/media/Data/0_Git_Repos/opentrack/opentrack/x-plane-plugin/plugin.c: In function ‘XPluginStart’:
+/media/Data/0_Git_Repos/opentrack/opentrack/x-plane-plugin/plugin.c:376:52: warning: format ‘%f’ expects argument of type ‘double’, but argument 3 has type ‘int’ [-Wformat=]
+  376 |             sprintf(message,"Opentrack: Plugin v%.2f loaded\n", VERSION);
+      |                                                 ~~~^            ~~~~~~~
+      |                                                    |            |
+      |                                                    double       int
+      |                                                 %.2d
+[91/584] Linking C shared library x-plane-plugin/opentrack.xpl
+[92/584] Linking C static library _deps/ahrsfusion-build/libFusion.a
+[93/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/dquat.cpp.o
+[94/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/euler.cpp.o
+[95/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/hamilton-tools.cpp.o
+[96/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/mutex.cpp.o
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp: In instantiation of ‘mutex<MutexType>& mutex<MutexType>::operator=(const mutex<MutexType>&) [with MutexType = QMutex]’:
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp:30:34:   required from here
+   30 | template class OTR_COMPAT_EXPORT mutex<QMutex>;
+      |                                  ^~~~~~~~~~~~~
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp:8:44: warning: unused parameter ‘rhs’ [-Wunused-parameter]
+    8 | mutex<M>& mutex<M>::operator=(const mutex& rhs)
+      |                               ~~~~~~~~~~~~~^~~
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp: In instantiation of ‘mutex<MutexType>::mutex(const mutex<MutexType>&) [with MutexType = QMutex]’:
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp:30:34:   required from here
+   30 | template class OTR_COMPAT_EXPORT mutex<QMutex>;
+      |                                  ^~~~~~~~~~~~~
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp:15:54: warning: unused parameter ‘datum’ [-Wunused-parameter]
+   15 | template<typename M> mutex<M>::mutex(const mutex<M>& datum) {}
+      |                                      ~~~~~~~~~~~~~~~~^~~~~
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp: In instantiation of ‘mutex<MutexType>& mutex<MutexType>::operator=(const mutex<MutexType>&) [with MutexType = QRecursiveMutex]’:
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp:31:34:   required from here
+   31 | template class OTR_COMPAT_EXPORT mutex<QRecursiveMutex>;
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp:8:44: warning: unused parameter ‘rhs’ [-Wunused-parameter]
+    8 | mutex<M>& mutex<M>::operator=(const mutex& rhs)
+      |                               ~~~~~~~~~~~~~^~~
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp: In instantiation of ‘mutex<MutexType>::mutex(const mutex<MutexType>&) [with MutexType = QRecursiveMutex]’:
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp:31:34:   required from here
+   31 | template class OTR_COMPAT_EXPORT mutex<QRecursiveMutex>;
+      |                                  ^~~~~~~~~~~~~~~~~~~~~~
+/media/Data/0_Git_Repos/opentrack/opentrack/compat/mutex.cpp:15:54: warning: unused parameter ‘datum’ [-Wunused-parameter]
+   15 | template<typename M> mutex<M>::mutex(const mutex<M>& datum) {}
+      |                                      ~~~~~~~~~~~~~~~~^~~~~
+[97/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/base-path.cpp.o
+[98/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/timer.cpp.o
+[99/584] Building CXX object qxt-mini/CMakeFiles/opentrack-qxt-mini.dir/moc_qxtglobalshortcut.cpp.o
+[100/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/correlation-calibrator.cpp.o
+[101/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/qt-signal.cpp.o
+[102/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/check-visible.cpp.o
+[103/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/camera-names.cpp.o
+[104/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_spinbox64.cpp.o
+[105/584] Building CXX object api/CMakeFiles/opentrack-api.dir/plugin-api.cpp.o
+[106/584] Building CXX object qxt-mini/CMakeFiles/opentrack-qxt-mini.dir/x11-keymap.cpp.o
+[107/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/process-list.cpp.o
+[108/584] Building CXX object qxt-mini/CMakeFiles/opentrack-qxt-mini.dir/qxtglobalshortcut.cpp.o
+[109/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/thread-name.cpp.o
+[110/584] Building CXX object qxt-mini/CMakeFiles/opentrack-qxt-mini.dir/qxtglobalshortcut_x11.cpp.o
+[111/584] Building CXX object api/CMakeFiles/opentrack-api.dir/moc_plugin-api.cpp.o
+[112/584] Linking CXX shared library qxt-mini/opentrack-qxt-mini.so
+[113/584] Running lupdate for qxt-mini
+[114/584] Linking CXX shared library api/opentrack-api.so
+[115/584] Running lupdate for api
+[116/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/spinbox64.cpp.o
+[117/584] Building CXX object compat/CMakeFiles/opentrack-compat.dir/moc_qt-signal.cpp.o
+[118/584] Linking CXX shared library compat/opentrack-compat.so
+[119/584] Generating moc_connector.cpp
+[120/584] Generating moc_defs.cpp
+[121/584] Generating moc_export.cpp
+[122/584] Generating moc_group.cpp
+[123/584] Generating moc_globals.cpp
+[124/584] Generating moc_bundle.cpp
+[125/584] Generating moc_base-value.cpp
+[126/584] Generating moc_metatype.cpp
+[127/584] Generating moc_slider.cpp
+[128/584] Generating moc_value-traits.cpp
+[129/584] Generating moc_scoped.cpp
+[130/584] Generating moc_options.cpp
+[131/584] Generating moc_value.cpp
+[132/584] Generating moc_tie.cpp
+[133/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_defs.cpp.o
+[134/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_globals.cpp.o
+[135/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_options.cpp.o
+[136/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_connector.cpp.o
+[137/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_export.cpp.o
+[138/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_group.cpp.o
+[139/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_metatype.cpp.o
+[140/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_tie.cpp.o
+[141/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_slider.cpp.o
+[142/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_value-traits.cpp.o
+[143/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_scoped.cpp.o
+[144/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_value.cpp.o
+[145/584] Running lupdate for compat
+[146/584] Generating opentrack-wrapper-wine.exe.so
+[147/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_bundle.cpp.o
+[148/584] Building CXX object options/CMakeFiles/opentrack-options.dir/slider.cpp.o
+[149/584] Building CXX object options/CMakeFiles/opentrack-options.dir/group.cpp.o
+[150/584] Building CXX object options/CMakeFiles/opentrack-options.dir/globals.cpp.o
+[151/584] Building CXX object options/CMakeFiles/opentrack-options.dir/bundle.cpp.o
+[152/584] Building CXX object options/CMakeFiles/opentrack-options.dir/base-value.cpp.o
+[153/584] Building CXX object options/CMakeFiles/opentrack-options.dir/connector.cpp.o
+[154/584] Building CXX object options/CMakeFiles/opentrack-options.dir/scoped.cpp.o
+[155/584] Building CXX object options/CMakeFiles/opentrack-options.dir/metatype.cpp.o
+[156/584] Building CXX object options/CMakeFiles/opentrack-options.dir/tie.cpp.o
+[157/584] Building CXX object options/CMakeFiles/opentrack-options.dir/moc_base-value.cpp.o
+[158/584] Building CXX object options/CMakeFiles/opentrack-options.dir/value.cpp.o
+[159/584] Linking CXX shared library options/opentrack-options.so
+[160/584] Generating moc_dinput.cpp
+[161/584] Generating moc_export.cpp
+[162/584] Generating moc_gameinput.cpp
+[163/584] Generating moc_key-opts.cpp
+[164/584] Generating moc_key.cpp
+[165/584] Generating moc_keybinding-worker.cpp
+[166/584] Generating moc_shortcuts.cpp
+[167/584] Generating moc_win32-joystick.cpp
+[168/584] Generating moc_win32-shortcuts.cpp
+[169/584] Generating moc_export.cpp
+[170/584] Generating moc_camera.cpp
+[171/584] Generating moc_export.cpp
+[172/584] Generating moc_video-widget.cpp
+[173/584] Generating moc_export.cpp
+[174/584] Generating moc_axis-opts.cpp
+[175/584] Generating moc_pose-widget.cpp
+[176/584] Generating moc_csv.cpp
+[177/584] Generating moc_spline.cpp
+[178/584] Generating moc_alpha-spectrum-settings.cpp
+[179/584] Generating moc_ftnoir_protocol_libevdev.cpp
+[180/584] Generating moc_spline-widget.cpp
+[181/584] Generating moc_ftnoir_filter_ewma2.cpp
+[182/584] Generating moc_ftnoir_filter_alpha_spectrum.cpp
+[183/584] Generating moc_ftnoir_filter_hamilton.cpp
+[184/584] Generating moc_ftnoir_filter_nm.cpp
+[185/584] Generating moc_ftnoir_protocol_fg.cpp
+[186/584] Generating moc_ftnoir_protocol_ftn.cpp
+[187/584] Generating moc_ftnoir_tracker_freepie-udp.cpp
+[188/584] Generating qrc_fg-protocol.cpp
+[189/584] Generating qrc_libevdev-protocol.cpp
+[190/584] Generating moc_fusion.cpp
+[191/584] Generating qrc_freepie-udp-res.cpp
+[192/584] Generating ui_ftnoir_libevdev_controls.h
+[193/584] Generating ui_ftnoir_alpha_spectrum_filtercontrols.h
+[194/584] Generating ui_ftnoir_ewma_filtercontrols.h
+[195/584] Generating ui_ftnoir_nm_filtercontrols.h
+[196/584] Generating ui_ftnoir_ftncontrols.h
+[197/584] Generating ui_freepie-udp-controls.h
+[198/584] Generating ui_fusion.h
+[199/584] Building CXX object input/CMakeFiles/opentrack-input.dir/dinput.cpp.o
+[200/584] Building CXX object input/CMakeFiles/opentrack-input.dir/win32-joystick.cpp.o
+[201/584] Building CXX object input/CMakeFiles/opentrack-input.dir/moc_dinput.cpp.o
+[202/584] Generating ui_ftnoir_hamilton_filtercontrols.h
+[203/584] Generating ui_ftnoir_fgcontrols.h
+[204/584] Building CXX object input/CMakeFiles/opentrack-input.dir/gameinput.cpp.o
+[205/584] Building CXX object input/CMakeFiles/opentrack-input.dir/keybinding-worker.cpp.o
+[206/584] Building CXX object input/CMakeFiles/opentrack-input.dir/win32-shortcuts.cpp.o
+[207/584] Building CXX object input/CMakeFiles/opentrack-input.dir/moc_export.cpp.o
+[208/584] Building CXX object input/CMakeFiles/opentrack-input.dir/moc_gameinput.cpp.o
+[209/584] Building CXX object input/CMakeFiles/opentrack-input.dir/moc_key-opts.cpp.o
+[210/584] Building CXX object input/CMakeFiles/opentrack-input.dir/moc_key.cpp.o
+[211/584] Building CXX object input/CMakeFiles/opentrack-input.dir/moc_shortcuts.cpp.o
+[212/584] Building CXX object input/CMakeFiles/opentrack-input.dir/moc_win32-shortcuts.cpp.o
+[213/584] Generating qrc_posewidget.cpp
+[214/584] Building CXX object input/CMakeFiles/opentrack-input.dir/moc_keybinding-worker.cpp.o
+[215/584] Building CXX object input/CMakeFiles/opentrack-input.dir/moc_win32-joystick.cpp.o
+[216/584] Building CXX object spline/CMakeFiles/opentrack-spline.dir/moc_axis-opts.cpp.o
+[217/584] Building CXX object spline/CMakeFiles/opentrack-spline.dir/moc_export.cpp.o
+[218/584] Generating moc_tracker_xreal_one_imu_frame.cpp
+[219/584] Generating qrc_fusion.cpp
+[220/584] Generating qrc_s2bot-res.cpp
+[221/584] Generating moc_test.cpp
+[222/584] Generating moc_ftnoir_tracker_linux_joystick.cpp
+[223/584] Generating ui_ftnoir_tracker_linux_joystick_controls.h
+[224/584] Generating moc_ftnoir_tracker_s2bot.cpp
+[225/584] Generating ui_s2bot-controls.h
+[226/584] Generating ui_test.h
+[227/584] Generating ui_ftnoir_ftnclientcontrols.h
+[228/584] Generating moc_tracker_xreal_one.cpp
+[229/584] Generating ui_tracker_xreal_one_controls.h
+[230/584] Generating qrc_xreal-icon.cpp
+[231/584] Building CXX object video/CMakeFiles/opentrack-video.dir/moc_camera.cpp.o
+[232/584] Building CXX object video/CMakeFiles/opentrack-video.dir/moc_video-widget.cpp.o
+[233/584] Generating moc_ftnoir_tracker_udp.cpp
+[234/584] Building CXX object video/CMakeFiles/opentrack-video.dir/moc_export.cpp.o
+[235/584] Building CXX object csv/CMakeFiles/opentrack-csv.dir/moc_csv.cpp.o
+[236/584] Building CXX object pose-widget/CMakeFiles/opentrack-pose-widget.dir/moc_export.cpp.o
+[237/584] Building CXX object filter-alpha-spectrum/CMakeFiles/opentrack-filter-alpha-spectrum.dir/moc_alpha-spectrum-settings.cpp.o
+[238/584] Building CXX object pose-widget/CMakeFiles/opentrack-pose-widget.dir/moc_pose-widget.cpp.o
+[239/584] Building CXX object proto-flightgear/CMakeFiles/opentrack-proto-fgfs.dir/qrc_fg-protocol.cpp.o
+[240/584] Building CXX object pose-widget/CMakeFiles/opentrack-pose-widget.dir/qrc_posewidget.cpp.o
+[241/584] Building CXX object proto-libevdev/CMakeFiles/opentrack-proto-libevdev.dir/qrc_libevdev-protocol.cpp.o
+[242/584] Building CXX object input/CMakeFiles/opentrack-input.dir/key.cpp.o
+[243/584] Building CXX object csv/CMakeFiles/opentrack-csv.dir/csv.cpp.o
+[244/584] Linking CXX static library csv/opentrack-csv.a
+[245/584] Generating moc_ftnoir_protocol_wine.cpp
+[246/584] Generating moc_proton.cpp
+[247/584] Generating moc_wine-shm.cpp
+[248/584] Building CXX object proto-libevdev/CMakeFiles/opentrack-proto-libevdev.dir/ftnoir_protocol_libevdev_dialog.cpp.o
+[249/584] Generating ui_ftnoir_winecontrols.h
+[250/584] Generating qrc_wine-protocol.cpp
+[251/584] Building CXX object video/CMakeFiles/opentrack-video.dir/camera.cpp.o
+[252/584] Building CXX object proto-libevdev/CMakeFiles/opentrack-proto-libevdev.dir/ftnoir_protocol_libevdev.cpp.o
+[253/584] Building CXX object video/CMakeFiles/opentrack-video.dir/video-widget.cpp.o
+[254/584] Building CXX object pose-widget/CMakeFiles/opentrack-pose-widget.dir/pose-widget.cpp.o
+[255/584] Building CXX object proto-libevdev/CMakeFiles/opentrack-proto-libevdev.dir/moc_ftnoir_protocol_libevdev.cpp.o
+[256/584] Building CXX object spline/CMakeFiles/opentrack-spline.dir/moc_spline.cpp.o
+[257/584] Building CXX object proto-wine/CMakeFiles/opentrack-proto-wine.dir/moc_proton.cpp.o
+[258/584] Building CXX object proto-wine/CMakeFiles/opentrack-proto-wine.dir/moc_wine-shm.cpp.o
+[259/584] Building CXX object input/CMakeFiles/opentrack-input.dir/key-opts.cpp.o
+[260/584] Building CXX object proto-wine/CMakeFiles/opentrack-proto-wine.dir/qrc_wine-protocol.cpp.o
+[261/584] Building CXX object tracker-freepie-udp/CMakeFiles/opentrack-tracker-freepie-udp.dir/qrc_freepie-udp-res.cpp.o
+[262/584] Linking CXX shared library video/opentrack-video.so
+[263/584] Generating moc_affine.cpp
+[264/584] Generating moc_init.cpp
+[265/584] Generating moc_numeric.cpp
+[266/584] Generating moc_translation-calibrator.cpp
+[267/584] Generating moc_video-widget.cpp
+[268/584] Building CXX object spline/CMakeFiles/opentrack-spline.dir/axis-opts.cpp.o
+[269/584] Building CXX object filter-ewma2/CMakeFiles/opentrack-filter-ewma.dir/moc_ftnoir_filter_ewma2.cpp.o
+[270/584] Linking CXX shared library pose-widget/opentrack-pose-widget.so
+[271/584] Building CXX object proto-flightgear/CMakeFiles/opentrack-proto-fgfs.dir/ftnoir_protocol_fg.cpp.o
+[272/584] Building CXX object cv/CMakeFiles/opentrack-cv.dir/moc_affine.cpp.o
+[273/584] Building CXX object cv/CMakeFiles/opentrack-cv.dir/moc_init.cpp.o
+[274/584] Building CXX object cv/CMakeFiles/opentrack-cv.dir/moc_numeric.cpp.o
+[275/584] Building CXX object filter-nm/CMakeFiles/opentrack-filter-nm.dir/moc_ftnoir_filter_nm.cpp.o
+[276/584] Building CXX object cv/CMakeFiles/opentrack-cv.dir/moc_translation-calibrator.cpp.o
+[277/584] Generating moc_impl.cpp
+[278/584] Generating moc_video-property-page.cpp
+[279/584] Building CXX object cv/CMakeFiles/opentrack-cv.dir/moc_video-widget.cpp.o
+[280/584] Building CXX object filter-nm/CMakeFiles/opentrack-filter-nm.dir/ftnoir_filter_nm.cpp.o
+[281/584] Building CXX object filter-ewma2/CMakeFiles/opentrack-filter-ewma.dir/ftnoir_filter_ewma2.cpp.o
+[282/584] Building CXX object tracker-fusion/CMakeFiles/opentrack-tracker-fusion.dir/qrc_fusion.cpp.o
+[283/584] Building CXX object filter-hamilton/CMakeFiles/opentrack-filter-hamilton.dir/moc_ftnoir_filter_hamilton.cpp.o
+[284/584] Building CXX object spline/CMakeFiles/opentrack-spline.dir/moc_spline-widget.cpp.o
+[285/584] Building CXX object tracker-freepie-udp/CMakeFiles/opentrack-tracker-freepie-udp.dir/ftnoir_tracker_freepie-udp.cpp.o
+[286/584] Building CXX object proto-udp/CMakeFiles/opentrack-proto-udp.dir/ftnoir_protocol_ftn_dialog.cpp.o
+[287/584] Building CXX object cv/CMakeFiles/opentrack-cv.dir/affine.cpp.o
+[288/584] Building CXX object filter-alpha-spectrum/CMakeFiles/opentrack-filter-alpha-spectrum.dir/moc_ftnoir_filter_alpha_spectrum.cpp.o
+[289/584] Building CXX object tracker-s2bot/CMakeFiles/opentrack-tracker-s2bot.dir/qrc_s2bot-res.cpp.o
+[290/584] Building CXX object filter-hamilton/CMakeFiles/opentrack-filter-hamilton.dir/ftnoir_filter_hamilton_dialog.cpp.o
+[291/584] Building CXX object proto-udp/CMakeFiles/opentrack-proto-udp.dir/moc_ftnoir_protocol_ftn.cpp.o
+[292/584] Building CXX object input/CMakeFiles/opentrack-input.dir/shortcuts.cpp.o
+[293/584] Building CXX object filter-hamilton/CMakeFiles/opentrack-filter-hamilton.dir/ftnoir_filter_hamilton.cpp.o
+[294/584] Building CXX object cv/CMakeFiles/opentrack-cv.dir/init.cpp.o
+[295/584] Building CXX object proto-flightgear/CMakeFiles/opentrack-proto-fgfs.dir/moc_ftnoir_protocol_fg.cpp.o
+[296/584] Building CXX object filter-ewma2/CMakeFiles/opentrack-filter-ewma.dir/ftnoir_filter_ewma2_dialog.cpp.o
+[297/584] Building CXX object filter-nm/CMakeFiles/opentrack-filter-nm.dir/ftnoir_filter_nm_dialog.cpp.o
+[298/584] Building CXX object filter-alpha-spectrum/CMakeFiles/opentrack-filter-alpha-spectrum.dir/ftnoir_filter_alpha_spectrum.cpp.o
+[299/584] Linking CXX shared library input/opentrack-input.so
+[300/584] Building CXX object tracker-xreal-one/CMakeFiles/opentrack-tracker-xreal-one.dir/moc_tracker_xreal_one_imu_frame.cpp.o
+[301/584] Building CXX object spline/CMakeFiles/opentrack-spline.dir/spline-widget.cpp.o
+[302/584] Building CXX object tracker-xreal-one/CMakeFiles/opentrack-tracker-xreal-one.dir/qrc_xreal-icon.cpp.o
+[303/584] Building CXX object proto-udp/CMakeFiles/opentrack-proto-udp.dir/ftnoir_protocol_ftn.cpp.o
+[304/584] Building CXX object video-opencv/CMakeFiles/opentrack-video-opencv.dir/moc_impl.cpp.o
+[305/584] Building CXX object video-opencv/CMakeFiles/opentrack-video-opencv.dir/moc_video-property-page.cpp.o
+[306/584] Building CXX object filter-alpha-spectrum/CMakeFiles/opentrack-filter-alpha-spectrum.dir/ftnoir_filter_alpha_spectrum_dialog.cpp.o
+[307/584] Building CXX object spline/CMakeFiles/opentrack-spline.dir/spline.cpp.o
+[308/584] Building CXX object proto-flightgear/CMakeFiles/opentrack-proto-fgfs.dir/ftnoir_protocol_fg_dialog.cpp.o
+[309/584] Linking CXX shared library spline/opentrack-spline.so
+[310/584] Generating moc_dbus.cpp
+[311/584] Generating moc_export.cpp
+[312/584] Generating moc_main-settings.cpp
+[313/584] Generating moc_mappings.cpp
+[314/584] Generating moc_pipeline.cpp
+[315/584] Generating moc_runtime-libraries.cpp
+[316/584] Generating moc_state.cpp
+[317/584] Linking CXX shared library filter-hamilton/opentrack-filter-hamilton.so
+[318/584] Generating moc_tracklogger.cpp
+[319/584] Generating moc_accela_hamilton.cpp
+[320/584] Generating moc_work.cpp
+[321/584] Generating moc_accela_hamilton_settings.cpp
+[322/584] Linking CXX shared library filter-ewma2/opentrack-filter-ewma.so
+[323/584] Linking CXX shared library filter-alpha-spectrum/opentrack-filter-alpha-spectrum.so
+[324/584] Building CXX object proto-wine/CMakeFiles/opentrack-proto-wine.dir/proton.cpp.o
+[325/584] Building CXX object tracker-freepie-udp/CMakeFiles/opentrack-tracker-freepie-udp.dir/ftnoir_tracker_freepie-udp_dialog.cpp.o
+[326/584] Building CXX object video-opencv/CMakeFiles/opentrack-video-opencv.dir/impl-metadata.cpp.o
+[327/584] Building CXX object cv/CMakeFiles/opentrack-cv.dir/translation-calibrator.cpp.o
+[328/584] Building CXX object cv/CMakeFiles/opentrack-cv.dir/video-widget.cpp.o
+[329/584] Building CXX object tracker-freepie-udp/CMakeFiles/opentrack-tracker-freepie-udp.dir/moc_ftnoir_tracker_freepie-udp.cpp.o
+[330/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/moc_export.cpp.o
+[331/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/moc_main-settings.cpp.o
+[332/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/moc_mappings.cpp.o
+[333/584] Building CXX object tracker-test/CMakeFiles/opentrack-tracker-test.dir/moc_test.cpp.o
+[334/584] Building CXX object video-opencv/CMakeFiles/opentrack-video-opencv.dir/video-property-page.cpp.o
+[335/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/moc_state.cpp.o
+[336/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/moc_tracklogger.cpp.o
+[337/584] Building CXX object tracker-test/CMakeFiles/opentrack-tracker-test.dir/test_dialog.cpp.o
+[338/584] Building CXX object tracker-test/CMakeFiles/opentrack-tracker-test.dir/test.cpp.o
+[339/584] Generating ui_accela_hamilton_filtercontrols.h
+[340/584] Generating moc_accela-settings.cpp
+[341/584] Linking CXX static library cv/opentrack-cv.a
+[342/584] Generating moc_ftnoir_filter_accela.cpp
+[343/584] Generating moc_ftnoir_tracker_pt_dialog.cpp
+[344/584] Building CXX object proto-wine/CMakeFiles/opentrack-proto-wine.dir/ftnoir_protocol_wine.cpp.o
+[345/584] Generating moc_ftnoir_tracker_pt.cpp
+[346/584] Generating moc_point-filter.cpp
+[347/584] Generating moc_point_tracker.cpp
+[348/584] Generating moc_pt-api.cpp
+[349/584] Generating moc_pt-settings.cpp
+[350/584] Generating ui_FTNoIR_PT_Controls.h
+[351/584] Generating qrc_tracker_pt_base.cpp
+[352/584] Generating moc_export.cpp
+[353/584] Generating ui_ftnoir_accela_filtercontrols.h
+[354/584] Building CXX object proto-wine/CMakeFiles/opentrack-proto-wine.dir/moc_ftnoir_protocol_wine.cpp.o
+[355/584] Building CXX object video-opencv/CMakeFiles/opentrack-video-opencv.dir/impl-camera.cpp.o
+[356/584] Building CXX object tracker-linux-joystick/CMakeFiles/opentrack-tracker-linux-joystick.dir/moc_ftnoir_tracker_linux_joystick.cpp.o
+[357/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/moc_ftnoir_tracker_pt.cpp.o
+[358/584] Building CXX object tracker-linux-joystick/CMakeFiles/opentrack-tracker-linux-joystick.dir/ftnoir_tracker_linux_joystick.cpp.o
+[359/584] Building CXX object tracker-udp/CMakeFiles/opentrack-tracker-udp.dir/ftnoir_tracker_udp.cpp.o
+[360/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/moc_point_tracker.cpp.o
+[361/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/moc_point-filter.cpp.o
+[362/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/moc_pt-settings.cpp.o
+[363/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/moc_pt-api.cpp.o
+[364/584] Generating moc_kalman-filter-pose.cpp
+[365/584] Generating moc_module.cpp
+[366/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/qrc_tracker_pt_base.cpp.o
+[367/584] Generating moc_preview.cpp
+[368/584] Generating moc_settings.cpp
+[369/584] Generating moc_point-extractor.cpp
+[370/584] Generating moc_tracker-easy-dialog.cpp
+[371/584] Generating moc_tracker-easy.cpp
+[372/584] Generating ui_tracker-easy-settings.h
+[373/584] Generating qrc_tracker_easy.cpp
+[374/584] Generating moc_deadzone_filter.cpp
+[375/584] Generating moc_model_adapters.cpp
+[376/584] Generating moc_ftnoir_tracker_neuralnet.cpp
+[377/584] Generating moc_opencv_contrib.cpp
+[378/584] Generating moc_preview.cpp
+[379/584] Generating moc_unscented_trafo.cpp
+[380/584] Generating qrc_neuralnet-tracker.cpp
+[381/584] Generating ui_neuralnet-trackercontrols.h
+[382/584] Building CXX object tracker-udp/CMakeFiles/opentrack-tracker-udp.dir/moc_ftnoir_tracker_udp.cpp.o
+[383/584] Building CXX object tracker-fusion/CMakeFiles/opentrack-tracker-fusion.dir/fusion.cpp.o
+[384/584] Building CXX object filter-accela-hamilton/CMakeFiles/opentrack-filter-accela-hamilton.dir/moc_accela_hamilton_settings.cpp.o
+[385/584] Building CXX object tracker-s2bot/CMakeFiles/opentrack-tracker-s2bot.dir/moc_ftnoir_tracker_s2bot.cpp.o
+[386/584] Building CXX object tracker-s2bot/CMakeFiles/opentrack-tracker-s2bot.dir/ftnoir_tracker_s2bot_dialog.cpp.o
+[387/584] Building CXX object tracker-xreal-one/CMakeFiles/opentrack-tracker-xreal-one.dir/tracker_xreal_one_dialog.cpp.o
+[388/584] Building CXX object filter-accela/CMakeFiles/opentrack-filter-accela.dir/moc_accela-settings.cpp.o
+[389/584] Building CXX object tracker-fusion/CMakeFiles/opentrack-tracker-fusion.dir/fusion_dialog.cpp.o
+[390/584] Building CXX object tracker-linux-joystick/CMakeFiles/opentrack-tracker-linux-joystick.dir/ftnoir_tracker_linux_joystick_dialog.cpp.o
+[391/584] Building CXX object proto-wine/CMakeFiles/opentrack-proto-wine.dir/ftnoir_protocol_wine_dialog.cpp.o
+[392/584] Building CXX object tracker-udp/CMakeFiles/opentrack-tracker-udp.dir/ftnoir_tracker_udp_dialog.cpp.o
+[393/584] Building CXX object tracker-fusion/CMakeFiles/opentrack-tracker-fusion.dir/moc_fusion.cpp.o
+[394/584] Building CXX object tracker-s2bot/CMakeFiles/opentrack-tracker-s2bot.dir/ftnoir_tracker_s2bot.cpp.o
+[395/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/moc_export.cpp.o
+[396/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/moc_kalman-filter-pose.cpp.o
+[397/584] Building CXX object tracker-xreal-one/CMakeFiles/opentrack-tracker-xreal-one.dir/tracker_xreal_one.cpp.o
+[398/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/moc_point-extractor.cpp.o
+[399/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/moc_preview.cpp.o
+[400/584] Building CXX object tracker-xreal-one/CMakeFiles/opentrack-tracker-xreal-one.dir/moc_tracker_xreal_one.cpp.o
+[401/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/moc_settings.cpp.o
+[402/584] Building CXX object tracker-linux-joystick/CMakeFiles/opentrack-tracker-linux-joystick.dir/linux_joystick.cpp.o
+[403/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/qrc_tracker_easy.cpp.o
+[404/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/main-settings.cpp.o
+[405/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/mappings.cpp.o
+[406/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/dbus.cpp.o
+[407/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/runtime-libraries.cpp.o
+[408/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/kalman-filter-pose.cpp.o
+[409/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/moc_runtime-libraries.cpp.o
+[410/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/moc_deadzone_filter.cpp.o
+[411/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/tracklogger.cpp.o
+[412/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/moc_model_adapters.cpp.o
+[413/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/pipeline.cpp.o
+[414/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/moc_opencv_contrib.cpp.o
+[415/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/moc_preview.cpp.o
+[416/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/moc_unscented_trafo.cpp.o
+[417/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/qrc_neuralnet-tracker.cpp.o
+[418/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/deadzone_filter.cpp.o
+[419/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/pt-api.cpp.o
+[420/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/state.cpp.o
+[421/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/point-filter.cpp.o
+[422/584] Linking CXX shared library filter-nm/opentrack-filter-nm.so
+[423/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/work.cpp.o
+[424/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/point_tracker.cpp.o
+[425/584] Linking CXX shared library proto-flightgear/opentrack-proto-fgfs.so
+[426/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/moc_pipeline.cpp.o
+[427/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/moc_module.cpp.o
+[428/584] Linking CXX shared library proto-libevdev/opentrack-proto-libevdev.so
+[429/584] Linking CXX shared library proto-udp/opentrack-proto-udp.so
+[430/584] Running lupdate for csv
+[431/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/preview.cpp.o
+[432/584] Running lupdate for cv
+[433/584] Linking CXX shared library tracker-fusion/opentrack-tracker-fusion.so
+[434/584] Running lupdate for filter-alpha-spectrum
+[435/584] Running lupdate for filter-ewma
+[436/584] Running lupdate for filter-hamilton
+[437/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/tests.cpp.o
+[438/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/moc_dbus.cpp.o
+[439/584] Running lupdate for input
+[440/584] Building CXX object filter-accela-hamilton/CMakeFiles/opentrack-filter-accela-hamilton.dir/accela_hamilton.cpp.o
+[441/584] Linking CXX shared library tracker-test/opentrack-tracker-test.so
+[442/584] Linking CXX shared library tracker-freepie-udp/opentrack-tracker-freepie-udp.so
+[443/584] Linking CXX shared library tracker-s2bot/opentrack-tracker-s2bot.so
+[444/584] Running lupdate for filter-nm
+[445/584] Running lupdate for options
+[446/584] Running lupdate for pose-widget
+[447/584] Running lupdate for tracker-fusion
+[448/584] Running lupdate for spline
+[449/584] Linking CXX shared library proto-wine/opentrack-proto-wine.so
+[450/584] Running lupdate for tracker-s2bot
+[451/584] Running lupdate for tracker-freepie-udp
+[452/584] Running lupdate for video
+[453/584] Running lupdate for proto-udp
+[454/584] Running lupdate for proto-fgfs
+[455/584] Running lupdate for proto-libevdev
+[456/584] Linking CXX shared library video-opencv/opentrack-video-opencv.so
+[457/584] Running lupdate for tracker-test
+[458/584] Running lupdate for proto-wine
+[459/584] Linking CXX shared library tracker-udp/opentrack-tracker-udp.so
+[460/584] Linking CXX shared library tracker-linux-joystick/opentrack-tracker-linux-joystick.so
+[461/584] Running lupdate for video-opencv
+[462/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/ftnoir_tracker_pt.cpp.o
+[463/584] Running lupdate for tracker-udp
+[464/584] Running lupdate for tracker-linux-joystick
+[465/584] Linking CXX shared library tracker-xreal-one/opentrack-tracker-xreal-one.so
+[466/584] Running lupdate for tracker-xreal-one
+[467/584] Building CXX object logic/CMakeFiles/opentrack-logic.dir/moc_work.cpp.o
+[468/584] Building CXX object filter-accela-hamilton/CMakeFiles/opentrack-filter-accela-hamilton.dir/accela_hamilton_dialog.cpp.o
+[469/584] Building CXX object filter-accela-hamilton/CMakeFiles/opentrack-filter-accela-hamilton.dir/moc_accela_hamilton.cpp.o
+[470/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/ftnoir_tracker_pt_dialog.cpp.o
+[471/584] Building CXX object filter-accela/CMakeFiles/opentrack-filter-accela.dir/moc_ftnoir_filter_accela.cpp.o
+[472/584] Building CXX object filter-accela/CMakeFiles/opentrack-filter-accela.dir/ftnoir_filter_accela.cpp.o
+[473/584] Building CXX object tracker-pt/CMakeFiles/opentrack-tracker-pt-base.dir/moc_ftnoir_tracker_pt_dialog.cpp.o
+[474/584] Linking CXX shared library filter-accela-hamilton/opentrack-filter-accela-hamilton.so
+[475/584] Linking CXX shared library logic/opentrack-logic.so
+[476/584] Generating moc_export.cpp
+[477/584] Generating moc_migration.cpp
+[478/584] Running lupdate for filter-accela-hamilton
+[479/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20220126_00-camera-name.cpp.o
+[480/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/moc_export.cpp.o
+[481/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/moc_migration.cpp.o
+[482/584] Running lupdate for logic
+[483/584] Linking CXX static library tracker-pt/pt-base.a
+[484/584] Generating moc_export.cpp
+[485/584] Generating moc_frame.cpp
+[486/584] Generating moc_point_extractor.cpp
+[487/584] Generating moc_camera.cpp
+[488/584] Generating moc_module.cpp
+[489/584] Generating qrc_tracker_pt.cpp
+[490/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/moc_export.cpp.o
+[491/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/moc_camera.cpp.o
+[492/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/moc_point_extractor.cpp.o
+[493/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/moc_frame.cpp.o
+[494/584] Running lupdate for tracker-pt-base
+/media/Data/0_Git_Repos/opentrack/opentrack/tracker-pt/ftnoir_tracker_pt.cpp:133: Class 'pt_impl::Tracker_PT' lacks Q_OBJECT macro
+[495/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/qrc_tracker_pt.cpp.o
+[496/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/module.cpp.o
+[497/584] Building CXX object filter-accela/CMakeFiles/opentrack-filter-accela.dir/ftnoir_filter_accela_dialog.cpp.o
+[498/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/preview.cpp.o
+[499/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/model_adapters.cpp.o
+[500/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/point-extractor.cpp.o
+[501/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/moc_tracker-easy.cpp.o
+[502/584] Linking CXX shared library filter-accela/opentrack-filter-accela.so
+[503/584] Running lupdate for filter-accela
+[504/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/tracker-easy.cpp.o
+[505/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/tracker-easy-dialog.cpp.o
+[506/584] Building CXX object tracker-easy/CMakeFiles/opentrack-tracker-easy.dir/moc_tracker-easy-dialog.cpp.o
+[507/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/env.cpp.o
+[508/584] Linking CXX shared library tracker-easy/opentrack-tracker-easy.so
+[509/584] Running lupdate for tracker-easy
+[510/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20171013_00-tracker-pt-threshold.cpp.o
+[511/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/moc_module.cpp.o
+[512/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/ftnoir_tracker_neuralnet.cpp.o
+[513/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20160906_02-modules.cpp.o
+[514/584] Building CXX object tracker-neuralnet/CMakeFiles/opentrack-tracker-neuralnet.dir/moc_ftnoir_tracker_neuralnet.cpp.o
+[515/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20180118_00-reltrans.cpp.o
+[516/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20170420_00-udp-naming.cpp.o
+[517/584] Linking CXX shared library tracker-neuralnet/opentrack-tracker-neuralnet.so
+[518/584] Running lupdate for tracker-neuralnet
+[519/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20160906_01-axis-signs.cpp.o
+[520/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/migration.cpp.o
+[521/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20180102_00-process-detector-separator.cpp.o
+[522/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/camera.cpp.o
+[523/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20220105_00-pt-grayscale.cpp.o
+[524/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20180428_00-module-names.cpp.o
+[525/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/point_extractor.cpp.o
+[526/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20171020_00-max-pitch-output.cpp.o
+[527/584] Building CXX object migration/CMakeFiles/opentrack-migration.dir/20160906_00-mappings.cpp.o
+[528/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/frame.cpp.o
+[529/584] Linking CXX shared library migration/opentrack-migration.so
+[530/584] Generating moc_export.cpp
+[531/584] Generating moc_init.cpp
+[532/584] Generating moc_listener.cpp
+[533/584] Generating moc_process-detector-fancy-table.cpp
+[534/584] Generating moc_process_detector.cpp
+[535/584] Generating ui_listener.h
+[536/584] Generating ui_correlation-calibrator.h
+[537/584] Generating ui_mapping-dialog.h
+[538/584] Generating ui_process_widget.h
+[539/584] Generating moc_options-dialog.cpp
+[540/584] Generating moc_mapping-dialog.cpp
+[541/584] Generating ui_options-dialog.h
+[542/584] Generating qrc_opentrack-res.cpp
+[543/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/moc_export.cpp.o
+[544/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/moc_init.cpp.o
+[545/584] Running lupdate for migration
+[546/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/qrc_opentrack-res.cpp.o
+[547/584] Building CXX object tracker-pt/module/CMakeFiles/opentrack-tracker-pt.dir/module.cpp.o
+[548/584] Linking CXX shared library tracker-pt/module/opentrack-tracker-pt.so
+[549/584] Running lupdate for tracker-pt
+[550/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/moc_listener.cpp.o
+[551/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/listener.cpp.o
+[552/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/moc_process-detector-fancy-table.cpp.o
+[553/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/process-detector-fancy-table.cpp.o
+[554/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/moc_options-dialog.cpp.o
+[555/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/moc_process_detector.cpp.o
+[556/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/moc_mapping-dialog.cpp.o
+[557/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/init.cpp.o
+[558/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/process_detector.cpp.o
+[559/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/mapping-dialog.cpp.o
+[560/584] Building CXX object gui/CMakeFiles/opentrack-user-interface.dir/options-dialog.cpp.o
+[561/584] Linking CXX shared library gui/opentrack-user-interface.so
+[562/584] Generating moc_defs.cpp
+[563/584] Generating moc_dbus.cpp
+[564/584] Generating ui_new_config.h
+[565/584] Generating moc_new_file_dialog.cpp
+[566/584] Generating ui_main-window.h
+[567/584] Generating moc_main-window.cpp
+[568/584] Building CXX object opentrack/CMakeFiles/opentrack-executable.dir/moc_defs.cpp.o
+[569/584] Building CXX object opentrack/CMakeFiles/opentrack-executable.dir/moc_main-window.cpp.o
+[570/584] Running lupdate for user-interface
+[571/584] Building CXX object opentrack/CMakeFiles/opentrack-executable.dir/moc_dbus.cpp.o
+[572/584] Building CXX object opentrack/CMakeFiles/opentrack-executable.dir/moc_new_file_dialog.cpp.o
+[573/584] Building CXX object opentrack/CMakeFiles/opentrack-executable.dir/new_file_dialog.cpp.o
+[574/584] Building CXX object opentrack/CMakeFiles/opentrack-executable.dir/dbus.cpp.o
+[575/584] Building CXX object opentrack/CMakeFiles/opentrack-executable.dir/main.cpp.o
+[576/584] Building CXX object opentrack/CMakeFiles/opentrack-executable.dir/main-window.cpp.o
+[577/584] Linking CXX executable opentrack/opentrack
+[578/584] Running lupdate for executable
+[579/584] Running lrelease for stub
+[580/584] Running lrelease for ru_RU
+[581/584] Running lrelease for de_DE
+[582/584] Running lrelease for nl_NL
+[583/584] Running lrelease for zh_CN
+[0/2] Re-checking globbed directories...
+[0/2] Install the project...
+-- Install configuration: "DEBUG"
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/opentrack/i18n/de_DE.qm
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/opentrack/i18n/nl_NL.qm
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/opentrack/i18n/ru_RU.qm
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/opentrack/i18n/stub.qm
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/opentrack/i18n/zh_CN.qm
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/ps3eyedriver/ps3eyedriver-opentrack-LICENSE.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/ps3eyedriver/libusbK-AUTHORS.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/ps3eyedriver/libusb0-AUTHORS.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/ps3eyedriver/ps3eyedriver-LICENSE.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/ps3eyedriver/libusbK-LICENSE-libusb.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/ps3eyedriver/libusbK-LICENSE-bsd.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/QT6-LGPL-3.0-only.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/OPENCV-COPYING.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/VJOYSTICK-COPYING.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/Kinect-V2-SDK-Eula.rtf
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/LIBUSB-COPYING.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/ARUCO-COPYING.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/ONNXRUNTIME.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/FACETRACKNOIR-COPYING.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/WIIYOURSELF-NONFREE.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/NFAILCLIENT-CREDIT.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/LIBOVR-COPYING.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/LIBQXT-COPYING.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/3rdparty-notices/VALVE-STEAMVR-COPYING.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/settings/facetracknoir supported games.csv
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/libusbK-dev-kit/libusbK-3.1.0.0-setup.exe
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/cute-octopus-vector-material_15-1831.jpg
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/freetracktest/readme.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/freetracktest/freetracktest.exe
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/libusbK-inf-wizard/libusbK-inf-wizard.exe
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/libusbK-inf-wizard/license/LICENSE-bsd.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/libusbK-inf-wizard/license/LICENSE-lgpl3.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/libusbK-inf-wizard/license/AUTHORS-libusb0.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/libusbK-inf-wizard/license/AUTHORS-libusbK.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/libusbK-inf-wizard/license/LICENSE-gpl3.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/hatire-test-data/puttyLog1MIN.zip
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/hatire-test-data/README.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/fs2002 and fs2004/fsuipc.dll
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/aruco/README.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/aruco/test3.png
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/aruco/aruco_create_marker.exe
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/glovepie/readme.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/glovepie/facetracknoir2trackir.pie
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/Tir4Fun/readme.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/Tir4Fun/npclient.dll
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/Tir4Fun/tir4fun.exe
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/trackir-client/client.c
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/trackir-client/client.exe
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/freepie-udp/com.wishsalad.wishimu-debug.apk
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/freepie-udp/license.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/freepie-udp/src-WishIMU.zip
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/freepie-udp/FreePIE_IMU_Android9.apk
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/npclient/npclient.c
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/npclient/README-CREDIT.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/npclient/COMPILE.TXT
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/FlightGear/readme.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/contrib/FlightGear/Protocol/headtracker.xml
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/presets/README.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/CONTRIBUTING.md
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/WARRANTY.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/OPENTRACK-LICENSING.txt
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/share/doc/opentrack/AUTHORS.md
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/freetrackclient.dll
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/freetrackclient64.dll
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/NPClient.dll
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/NPClient64.dll
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/TrackIR.exe
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-api.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-compat.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-filter-accela-hamilton.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-filter-accela.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-filter-alpha-spectrum.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-filter-ewma.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-filter-hamilton.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-filter-nm.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-user-interface.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-input.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-logic.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-migration.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/bin/opentrack
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-options.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-pose-widget.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-proto-fgfs.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-proto-libevdev.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-proto-udp.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-proto-wine.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-wrapper-wine.exe.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-qxt-mini.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-spline.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-easy.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-freepie-udp.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-fusion.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-linux-joystick.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-neuralnet.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/models/head-localizer.onnx
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/models/head-pose-0.2-big.onnx
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/models/head-pose-0.2-small.onnx
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/models/head-pose-0.5-big.onnx
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/models/head-pose-0.5-small.onnx
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-pt.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-s2bot.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-test.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-udp.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-tracker-xreal-one.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-video-opencv.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack-video.so
+-- Installing: /media/Data/0_Git_Repos/opentrack/opentrack-install/libexec/opentrack/opentrack.xpl
